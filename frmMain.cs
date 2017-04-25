@@ -57,12 +57,17 @@ namespace Trie
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            String[] words = LoadWords();
-            
+            Stopwatch watch = new Stopwatch();
+            watch.Start();
+
+            String[] words = LoadWords();            
             foreach (var word in words)
             {
                 trieTree.Add(word);
             }
+
+            watch.Stop();
+            MessageBox.Show(String.Format("Loaded {0} words in {1} milliseconds",words.Length,watch.ElapsedMilliseconds));
         }
             
           
