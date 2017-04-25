@@ -4,7 +4,9 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -34,9 +36,28 @@ namespace Trie
 
         }
 
+        private String[] LoadWords()
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+            var resourceName = "Trie.words.txt";
+
+            List<String> result = new List<string>();
+            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                String line = null;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    result.Add(line);
+                }
+            }
+
+            return result.ToArray();
+        }
+
         private void frmMain_Load(object sender, EventArgs e)
-        {             
-            String[] words = System.IO.File.ReadAllLines("c:\\words.txt");
+        {
+            String[] words = LoadWords();
             
             foreach (var word in words)
             {
