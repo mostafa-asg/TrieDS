@@ -54,6 +54,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tree.cs" />
+    <Compile Include="TreeBuilder.cs" />
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -84,6 +85,40 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="words.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="words\a.txt" />
+    <EmbeddedResource Include="words\b.txt" />
+    <EmbeddedResource Include="words\c.txt" />
+    <EmbeddedResource Include="words\d.txt" />
+    <EmbeddedResource Include="words\e.txt" />
+    <EmbeddedResource Include="words\f.txt" />
+    <EmbeddedResource Include="words\g.txt" />
+    <EmbeddedResource Include="words\h.txt" />
+    <EmbeddedResource Include="words\i.txt" />
+    <EmbeddedResource Include="words\j.txt" />
+    <EmbeddedResource Include="words\k.txt" />
+    <EmbeddedResource Include="words\l.txt" />
+    <EmbeddedResource Include="words\m.txt" />
+    <EmbeddedResource Include="words\n.txt" />
+    <EmbeddedResource Include="words\o.txt" />
+    <EmbeddedResource Include="words\p.txt" />
+    <EmbeddedResource Include="words\q.txt" />
+    <EmbeddedResource Include="words\r.txt" />
+    <EmbeddedResource Include="words\s.txt" />
+    <EmbeddedResource Include="words\t.txt" />
+    <EmbeddedResource Include="words\u.txt" />
+    <EmbeddedResource Include="words\v.txt" />
+    <EmbeddedResource Include="words\w.txt" />
+    <EmbeddedResource Include="words\x.txt" />
+    <EmbeddedResource Include="words\y.txt" />
+    <EmbeddedResource Include="words\z.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="words\1.txt" />
+    <EmbeddedResource Include="words\2.txt" />
+    <EmbeddedResource Include="words\3.txt" />
+    <EmbeddedResource Include="words\4.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

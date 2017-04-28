@@ -15,7 +15,7 @@ namespace Trie
 {
     public partial class frmMain : Form
     {
-        private Tree trieTree = new Tree();
+        private Tree trieTree;
 
         public frmMain()
         {
@@ -34,40 +34,17 @@ namespace Trie
                 lbWords.Items.AddRange(result.ToArray());
             }
 
-        }
-
-        private String[] LoadWords()
-        {
-            var assembly = Assembly.GetExecutingAssembly();
-            var resourceName = "Trie.words.txt";
-
-            List<String> result = new List<string>();
-            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
-            using (StreamReader reader = new StreamReader(stream))
-            {
-                String line = null;
-                while ((line = reader.ReadLine()) != null)
-                {
-                    result.Add(line);
-                }
-            }
-
-            return result.ToArray();
-        }
+        }      
 
         private void frmMain_Load(object sender, EventArgs e)
-        {
+        {                        
             Stopwatch watch = new Stopwatch();
             watch.Start();
 
-            String[] words = LoadWords();            
-            foreach (var word in words)
-            {
-                trieTree.Add(word);
-            }
+            trieTree = TreeBuilder.build();
 
             watch.Stop();
-            MessageBox.Show(String.Format("Loaded {0} words in {1} milliseconds",words.Length,watch.ElapsedMilliseconds));
+            MessageBox.Show(String.Format("Loaded {0} words in {1} milliseconds", trieTree.TotalWords , watch.ElapsedMilliseconds));
         }
             
           

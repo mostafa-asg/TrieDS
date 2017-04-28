@@ -7,13 +7,24 @@ using System.Threading.Tasks;
 namespace Trie
 {
     public class Tree
-    {
-        private Node root = new Node();
+    {        
+        private Node[] root = new Node[26];
+
+        public int TotalWords { get; set; }
 
         public void Add(String word)
-        {
-            if( !String.IsNullOrEmpty(word) ) 
-                Add(word.ToLower(), level: 0, node: root);
+        {            
+            if (!String.IsNullOrEmpty(word))
+            {
+                int rootIndex = (int)word[0] - 97;
+
+                if (root[rootIndex] == null)
+                {
+                    root[rootIndex] = new Node();
+                }
+
+                Add(word.ToLower(), level: 0, node: root[rootIndex]);
+            }
         }
 
         private void Add(String word, int level, Node node)
@@ -27,17 +38,32 @@ namespace Trie
                 node.children[word[level]] = child;                
             }
 
-            if (level == word.Length - 1)            
+            if (level == word.Length - 1)
+            {
                 child.IsLeaf = true;
-            else            
-                Add(word, level + 1, child);            
+                ++TotalWords;
+            }
+            else
+            {
+                Add(word, level + 1, child);
+            }
         }
 
         public List<String> FindWordsThatStartWith(String prefix)
         {
             List<String> result = new List<String>();
 
-            FindWordsThatStartWith(root, prefix, 0, String.Empty, result);
+            if (!String.IsNullOrEmpty(prefix))
+            {
+                prefix = prefix.ToLower();
+
+                if ((int)prefix[0] >= 97 && (int)prefix[0] <= 97 + 26)
+                {
+                    int rootIndex = (int)prefix[0] - 'a';
+                    FindWordsThatStartWith(root[rootIndex], prefix, 0, String.Empty, result);
+                }
+
+            }
 
             return result;
         }
